@@ -1,9 +1,0 @@
-Package: uk.evanw.squareui
-Name: SquareUI
-Author: Evan Walters (Infinite) <evan@evanw.uk>
-Description: Makes notifications and widgets square!
-Depends: mobilesubstrate
-Maintainer: Evan Walters (Infinite) <evan@evanw.uk>
-Architecture: iphoneos-arm
-Section: Tweaks
-Version: 1.0
