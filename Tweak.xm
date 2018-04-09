@@ -1,24 +1,24 @@
+
 %hook MTPlatterView
 - (double)cornerRadius {
-    return var;
+    return 0;
 } 
 %end
 
-//Preferences
-static void loadPrefs()
-{
-        NSMutableDictionary *prefs = [[NSMutableDictionary alloc] initWithContentsOfFile:@"/var/mobile/Library/Preferences/uk.evanw.squareuiprefs.plist"];
-    if(prefs)
-    {
-        var = [prefs objectForKey:@"var"] ? [[prefs objectForKey:@"var"] floatValue] : var;
+//Prefs
+
+NSUserDefaults *prefs = [[NSUserDefaults alloc] initWithSuiteName:@"uk.evanw.sqaureui"];
+
+%hook ClassName
+
+-(void) MethodName {
+        if ([prefs boolForKey:@"enabled"]) {
+            //Tweak enabled
+        } else {
+            //Tweak disabled
+        }
     }
-    [prefs release];
-}
 
-%ctor
-{
+%end
 
-    CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, (CFNotificationCallback)loadPrefs, CFSTR("uk.evanw.squareuiprefs/settingschanged"), NULL, CFNotificationSuspensionBehaviorCoalesce);
-    loadPrefs();
-}
 
